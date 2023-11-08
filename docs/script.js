@@ -1,7 +1,7 @@
 function submitForm(event) {
     event.preventDefault();
     var input = document.getElementById('input').value.replace(/\s/g, '').toUpperCase();
-    fetch(`https://whatsmyconstituency.co.uk/postcodes/${input}.txt`)
+    fetch(`https://12v.github.io/boundary-mapper/postcodes/${input}.txt`)
         .then(response => {
             if (!response.ok) {
                 throw new Error(response.status);
