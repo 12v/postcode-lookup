@@ -1,5 +1,5 @@
 # Ignore all .txt files in docs directory
-docs/*.txt
+docs/postcodes/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
