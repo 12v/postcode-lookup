@@ -22,8 +22,10 @@ directory = 'docs/postcodes'
 
 # Create the directory if it doesn't exist
 os.makedirs(directory, exist_ok=True)
+print('Directory created if not existing')
 
 # For each line, get the postcode and the new_constituency_name
+i = 0
 for row in reader:
     postcode, new_constituency_name = row
 
@@ -34,3 +36,7 @@ for row in reader:
     with open(os.path.join(directory, f'{filename}.txt'), 'w') as f:
         # Write the new_constituency_name to the text file
         f.write(new_constituency_name)
+    
+    i += 1
+    if i % 100000 == 0:
+        print(f'Processed {i} postcodes')
