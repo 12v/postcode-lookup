@@ -1,6 +1,6 @@
 function submitForm(event) {
     event.preventDefault();
-    var input = document.getElementById('input').value.replace(/\s/g, '').toUpperCase();
+    var input = document.getElementById('input').value.replace(/[^a-z0-9]/gi, '').replace(/\s/g, '').toUpperCase();
     fetch(`https://12v.github.io/boundary-mapper/postcodes/${input}.txt`)
         .then(response => {
             if (!response.ok) {
@@ -14,7 +14,7 @@ function submitForm(event) {
         })
         .catch(error => {
             if (error.message == '404') {
-                document.getElementById('result').textContent = 'Your postcode was not found, please check your postcode and try again.  Unfortunately, this tool currnetly only works for postcodes in England, Scotland and Wales.';
+                document.getElementById('result').textContent = 'Your postcode was not found, please check your postcode and try again.';
             } else {
                 document.getElementById('result').textContent = 'An error occurred: ' + error.message;
             }
